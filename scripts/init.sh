@@ -2,13 +2,7 @@
 
 # Initializing bash
 
-/bin/bash
 
-if [ $? -ne 0 ]; then
-	echo $(date)"->bash could not be started" >> /var/log/init.log
-else
-	echo $(date)"->bash has been started successfully" >> /var/log/init.log
-fi
 
 # Initializing the logging file
 
@@ -44,7 +38,7 @@ fi
 
 # Starting netcat on port 1234 TCP and UDP
 
-/bin/nc -lvk -p 1234 > /var/log/nc_tcp.log & && /bin/nc -lvku -p 1234 > /var/log/nc_udp.log &
+/bin/nc -lvk -p 1234 > /var/log/nc_tcp.log &
 
 if [ $? -ne 0 ]; then
 	echo $(date)"->the nc process could not be started completely" >> /var/log/init.log
@@ -53,8 +47,13 @@ else
 fi
 
 
+exec /bin/bash
 
-
+if [ $? -ne 0 ]; then
+	echo $(date)"->bash could not be started" >> /var/log/init.log
+else
+	echo $(date)"->bash has been started successfully" >> /var/log/init.log
+fi
 
 
 
