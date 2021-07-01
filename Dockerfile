@@ -40,4 +40,6 @@ RUN cat /root/.ssh/daniel@lab.pub > /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/authorized_keys
 COPY ./sshd_config /etc/ssh/
 # USER admin
+EXPOSE 1234/tcp
+EXPOSE 22/tcp
 ENTRYPOINT ["/opt/init.sh"]
