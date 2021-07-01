@@ -30,3 +30,9 @@ so that's why I choose to work with this one as a starting platform
 * nc on port 1234
 
 *I will be using a simple bash script to start these three processes*
+
+## How to work with this
+
+You need to copy your own ssh public keys under the ssh folder, so they can be added to 
+the authorized_hosts file under root's account.
+
